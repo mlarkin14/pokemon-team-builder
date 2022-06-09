@@ -12,6 +12,7 @@ User.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+      onDelete: "cascade",
     },
     user_name: {
       type: DataTypes.STRING,

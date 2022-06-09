@@ -1,3 +1,5 @@
+const { Model, DataTypes } = require("sequelize");
+
 const sequelize = require("../config/connection.js");
 
 class Teams extends Model {}
@@ -12,7 +14,7 @@ Teams.init(
       autoIncrement: true,
     },
     user_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: "user",
