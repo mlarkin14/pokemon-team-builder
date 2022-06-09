@@ -13,7 +13,11 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    category_name: {
+    user_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    password: {
       type: DataTypes.STRING,
       allowNull: false,
     },
