@@ -5,4 +5,8 @@ router.get("/", (req, res) => {
     res.render("homepage");
 });
 
+router.get("/pokemon", (req, res) => {
+    res.render("pokemon");
+});
+
 module.exports = router;
