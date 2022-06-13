@@ -23,15 +23,68 @@ function fetchPokemonData(pokemon) {
 var pokemonHolder = document.querySelector(".pokemon-holder");
 
 function appendPokemon(pokemon) {
+    // add Pokemon to team button
+    var btn = document.createElement("button")
+    btn.setAttribute("class", "btn btn-sm btn-success")
+
+    btn.textContent = "Add to Team"
+
+    btn.onclick = function () {
+        var pokemonToAdd = {
+            name: pokemon.species.name,
+            weight: pokemon.weight,
+            height: pokemon.height,
+            type: pokemon.types[0].type.name
+        }
+
+        handleClick(pokemonToAdd)
+    };
+
     // create pokemon name element
     var pokemonNameElement = document.createElement('h1');
+    var pokemonCard = document.createElement("div")
+    pokemonCard.setAttribute("class", "card pokeCard col-3")
+
+    var pokemonPic = document.createElement("img")
+    pokemonPic.setAttribute("src", pokemon.sprites.front_default)
+
+    var pokeHeight = document.createElement('h4');
+    var pokeWeight = document.createElement('h4');
+    var pokeType = document.createElement('h4');
+
+    pokeHeight.textContent = "Height: " + pokemon.height;
+    pokeWeight.textContent = "Weight: " + pokemon.weight;
+    pokeType.textContent = "Type: " + pokemon.types[0].type.name;
 
     // fill with appropiate data
     pokemonNameElement.textContent = pokemon.species.name;
 
+    pokemonCard.append(pokemonNameElement, pokemonPic, pokeHeight, pokeWeight, pokeType, btn )
     //append to page
-    pokemonHolder.appendChild(pokemonNameElement);
+    pokemonHolder.appendChild(pokemonCard);
 
 }
+
+function handleClick(pokemon){
+    console.log("pokeomon to add", pokemon)
+
+    var requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify(pokemon)
+    }
+
+    fetch("/api/teams", requestOptions)
+    .then((response)=>{
+        response.json();
+    })
+    .catch((err)=>{
+        console.log("Add pokemon to team error", err)
+    })
+}
+
+
+
+
 
 fetchPokemon();

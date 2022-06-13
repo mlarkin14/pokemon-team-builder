@@ -17,6 +17,18 @@ Pokemon.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    height: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    weight: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     team_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
