@@ -2,15 +2,20 @@
  display: flex;
  flex-wrap: wrap;
  box-sizing: border-box;
+text-align: center;
 }
 
-.pokemon-holder div {
-    margin: 10px;
-    padding: 3px;
-}
 .container {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+}
+
+.pokemon-link {
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+    border: 2px;
+    text-align: center;
 }
