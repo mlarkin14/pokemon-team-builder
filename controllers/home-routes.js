@@ -5,8 +5,8 @@ router.get("/", (req, res) => {
     res.render("homepage");
 });
 
-router.get("/pokemon", (req, res) => {
-    res.render("pokemon");
+router.get("/login", (req, res) => {
+    res.render("login");
 });
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
