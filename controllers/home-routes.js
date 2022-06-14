@@ -17,4 +17,26 @@ router.get("/login", (req, res) => {
 });
 
 
+router.get("/pokemon", (req, res) => {
+    res.render("pokemon", {
+        loggedIn: req.session.loggedIn
+    });
+
+    if (!req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+});
+
+router.get("/team", (req, res) => {
+    res.render("team", {
+        loggedIn: req.session.loggedIn
+    });
+
+    if (!req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+});
+
 module.exports = router;

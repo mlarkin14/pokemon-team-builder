@@ -1,9 +1,38 @@
 const router = require("express").Router()
+const { User, Teams, Pokemon } = require('../../models')
 
-router.post("/", (req, res)=>{
-console.log("data from frontend", req.body)
+// get all teams
+router.get('/', (req, res) => {
+    Teams.findAll({
+        attributes: [
+            'id',
+            'user_id'
+        ],
+        include: [
+            {
+                model: User,
+                attributes: ['user_name']
+            }
+        ]
+    })
+        .then(dbTeamData => res.json(dbTeamData))
+        .catch(err => {
+            console.log(err),
+                res.status(500).json(err);
+        })
+})
 
-    // in here handle your data to push to your Team table in DB
+//create a new team
+router.post("/", (req, res) => {
+    console.log("data from frontend", req.body)
+    Teams.create({
+        user_id: req.body.user_id
+    })
+        .then(dbTeamData => res.json(dbTeamData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
 })
 
 
