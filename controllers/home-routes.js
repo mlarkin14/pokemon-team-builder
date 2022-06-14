@@ -16,6 +16,9 @@ router.get("/login", (req, res) => {
     res.render("login");
 });
 
+router.get("/team", (req, res) => {
+    res.render("team");
+});
 
 router.get("/pokemon", (req, res) => {
     res.render("pokemon", {
