@@ -36,7 +36,7 @@
           {{#if loggedIn}}
           <a id="logout" type="button" class="btn btn-primary" role="button">Log Out</a>
           {{else}}
-          <a href="/javascript/pokemon.js" class="btn btn-primary " role="button">Login or Sign Up</button></a>
+          <a href="/login" class="btn btn-primary " role="button">Login or Sign Up</button></a>
           {{/if}}
         </nav>
     </div>
@@ -59,3 +59,7 @@
 </body>
 
 </html>
+
+    {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}}

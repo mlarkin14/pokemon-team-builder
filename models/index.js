@@ -1,11 +1,19 @@
 // import models
-const Pokemon = require("./pokemon");
-const Teams = require("./teams");
-const User = require("./user");
+const User = require("./User");
+const Teams = require("./Teams");
+const Pokemon = require("./Pokemon");
 
-// Pokemon belongsTo Teams
-Pokemon.belongsTo(Teams, {
-  foreignKey: "team_id",
+// User hasMany Teams
+User.hasMany(Teams, {
+  foreignKey: "user_id",
+});
+
+User.hasMany(Pokemon, {
+  foreignKey: 'pokemon_id'
+})
+
+Teams.belongsTo(User, {
+  foreignKey: 'user_id'
 });
 
 // Teams have many Pokemon
@@ -13,15 +21,17 @@ Teams.hasMany(Pokemon, {
   foreignKey: "team_id",
 });
 
-// User belongTo Teams
-Teams.belongsTo(User, {
+// Pokemon belongsTo Teams
+Pokemon.belongsTo(Teams, {
+  foreignKey: "team_id",
+});
+
+// Pokemon belongsTo Teams
+Pokemon.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-// User hasMany Teams
-User.hasMany(Teams, {
-  foreignKey: "user_id",
-});
+
 
 module.exports = {
   Pokemon,

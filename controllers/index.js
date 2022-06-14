@@ -1,26 +1,15 @@
 const router = require('express').Router();
-var authRouter = require('./controllers/auth');
-var passport = require('passport');
-var session = require('express-session');
+
+const apiRoutes = require('./api');
+const homeRoutes = require('./home-routes')
 
 
-const apiRoutes = require("./api");
-
+router.use('/api', apiRoutes);
 router.use('/', homeRoutes);
-router.use("/api", apiRoutes)
 
-var SQLiteStore = require('connect-sqlite3')(session);
-router.use('/', homeRoutes);
-app.use('/', authRouter);
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false,
-    store: new SQLiteStore({ db: 'sessions.db', dir: './var/db' })
-}));
-app.use(passport.authenticate('session'));
-
+router.use((req, res) => {
+    res.status(404).end();
+});
 
 module.exports = router;
