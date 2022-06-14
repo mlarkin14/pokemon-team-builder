@@ -36,7 +36,7 @@
           {{#if loggedIn}}
           <a id="logout" type="button" class="btn btn-primary" role="button">Log Out</a>
           {{else}}
-          <a href="/javascript/pokemon.js" class="btn btn-primary " role="button">Login or Sign Up</button></a>
+          <a href="/login" class="btn btn-primary " role="button">Login or Sign Up</button></a>
           {{/if}}
         </nav>
     </div>
@@ -45,11 +45,13 @@
   <main>
     {{{ body }}}
   </main>
-
+<div class="footer">
   <footer class="footer sticky-botto">
     <div class="copyright"> Created By Best Team! © BestTeam </div>
     <div class="copyright-message">Please don't copy</div>
   </footer>
+</div>
+  
   
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
