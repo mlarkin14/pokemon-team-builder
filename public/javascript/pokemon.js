@@ -26,7 +26,7 @@ var pokemonHolder = document.querySelector(".pokemon-holder");
 function appendPokemon(pokemon) {
     // add Pokemon to team button
     var btn = document.createElement("button")
-    btn.setAttribute("class", "btn btn-sm btn-success")
+    btn.setAttribute("class", "btn btn-sm btn-success add-pkmn-btn")
 
     btn.textContent = "Add to Team"
 
