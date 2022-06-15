@@ -7,11 +7,13 @@
     <div class="card-body ">
         <h3 class="card-title red-text">Login</h3>
         <div>
-            <form action="login">
-                <input class="margin-input" type="text" id="username" name="username" placeholder="Username">
-                <input class="margin-input" type="password" id="password" name="password" placeholder="Password">
+            <form action="login" class="login-form">
+                <input class="margin-input" type="text" id="user-login" name="user-login" placeholder="Username">
+                <input class="margin-input" type="password" id="password-login" name="password-login" placeholder="Password">
                 <br>
-                <a href="/team" class="login-btn btn btn-dark" type="button">Login</a>
+
+                <button class="login-btn btn btn-dark" type="submit">Login</button>
+=======
             </form>
         </div>
     </div>
@@ -22,14 +24,16 @@
     <div class="card-body ">
         <h3 class="card-title red-text">Sign Up</h3>
         <div>
-            <form action="signup">
-                <input class="margin-input" type="text" id="username" name="username" placeholder="Username">
-                <input class="margin-input" type="password" id="password" name="password" placeholder="Password">
-                <button href="/team" class="signup-btn btn btn-dark" type="button">Sign Up</button>
+            <form action="signup" class="signup-form">
+                <input class="margin-input" type="text" id="username-signup" name="username" placeholder="Username">
+                <input class="margin-input" type="password" id="password-signup" name="password" placeholder="Password">
+                <button class="signup-btn btn btn-dark" type="submit">Sign Up</button>
+
             </form>
         </div>
     </div>
 </div>
 
-
+{{!-- import javascript files --}}
+<script src="/javascript/login.js"></script>
 
