@@ -3,7 +3,8 @@ const routes = require("./controllers");
 const sequelize = require("./config/connection");
 const path = require("path");
 const exphbs = require("express-handlebars");
-const hbs = exphbs.create();
+var helpers = require('handlebars-helpers')();
+const hbs = exphbs.create(({ helpers }));
 
 //// use session and sequelize store libraries to set up sessions for cookie storage
 const session = require("express-session");

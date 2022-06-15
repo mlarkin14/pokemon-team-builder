@@ -1,21 +1,18 @@
 const router = require("express").Router()
 const { User, Teams, Pokemon } = require('../../models')
 
-// get all teams
+// get all pokemon
 router.get('/', (req, res) => {
-    Teams.findAll({
+    Pokemon.findAll({
         attributes: [
             'id',
-            'user_id'
-        ],
-        include: [
-            {
-                model: User,
-                attributes: ['user_name']
-            }
+            'name',
+            'type',
+            'weight',
+            'height'
         ]
     })
-        .then(dbTeamData => res.json(dbTeamData))
+        .then(dbPokemonData => res.json(dbPokemonData))
         .catch(err => {
             console.log(err),
                 res.status(500).json(err);
@@ -24,10 +21,14 @@ router.get('/', (req, res) => {
 
 //create a new team
 router.post("/", (req, res) => {
-    Teams.create({
-        user_id: req.body.user_id
+    Pokemon.create({
+        name: req.body.name,
+        type: req.body.type,
+        weight: req.body.weight,
+        height: req.body.height,
+        team_id: req.body.team_id
     })
-        .then(dbTeamData => res.json(dbTeamData))
+        .then(dbPokemonData => res.json(dbPokemonData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
