@@ -1,7 +1,7 @@
 // import models
-const User = require("./User");
-const Teams = require("./Teams");
-const Pokemon = require("./Pokemon");
+const User = require("./user");
+const Teams = require("./teams");
+const Pokemon = require("./pokemon");
 
 // User hasMany Teams
 User.hasMany(Teams, {

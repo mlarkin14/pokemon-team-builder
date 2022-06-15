@@ -28,15 +28,7 @@ Pokemon.init(
     type: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    team_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: "teams",
-        key: "id",
-      },
-    },
+    }
   },
   {
     sequelize,
