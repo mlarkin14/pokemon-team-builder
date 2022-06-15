@@ -66,22 +66,20 @@ function appendPokemon(pokemon) {
 
 }
 
-function handleClick(pokemon){
+async function handleClick(pokemon){
     console.log("pokeomon to add", pokemon)
 
-    var requestOptions = {
+    const response = await fetch('/api/pokemon', {
         method: "POST",
-        headers: { "Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(pokemon)
-    }
+    });
 
-    fetch("/api/teams", requestOptions)
-    .then((response)=>{
-        response.json();
-    })
-    .catch((err)=>{
-        console.log("Add pokemon to team error", err)
-    })
+    if (response.ok) {
+        document.location.replace('/team')
+    } else {
+        alert(response.statusText);
+    }
 }
 
 

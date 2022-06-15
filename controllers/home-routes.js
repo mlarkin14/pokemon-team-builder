@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
+const { Pokemon } = require('../models')
 
 router.get("/", (req, res) => {
     res.render("homepage", {
@@ -16,9 +17,6 @@ router.get("/login", (req, res) => {
     res.render("login");
 });
 
-router.get("/team", (req, res) => {
-    res.render("team");
-});
 
 router.get("/pokemon", (req, res) => {
     res.render("pokemon", {
@@ -32,14 +30,23 @@ router.get("/pokemon", (req, res) => {
 });
 
 router.get("/team", (req, res) => {
-    res.render("team", {
-        loggedIn: req.session.loggedIn
+
+    Pokemon.findAll({
+        attributes: ['id', 'name', 'weight', 'height', 'type']
+    })
+        .then((dbPokemonData) => {
+            const pokemon = dbPokemonData.map((pokemon) => pokemon.get({ plain: true }));
+            res.render("team", {
+                pokemon,
+                loggedIn: req.session.loggedIn
+            })
+        })
+        .catch((err) => {
+            console.log((err) => {
+                res.status(500).json(err);
+            })
+        })
     });
 
-    if (!req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
-});
 
 module.exports = router;
