@@ -17,6 +17,7 @@ body{
 .pika-cute{
     width: 8%;
     margin-top: 10px;
+    margin-bottom: auto;
 }
 .team-image{
     width: 50%;
@@ -38,12 +39,23 @@ body{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
 }
 
-.footer{
+.footer2{
+    position: absolute;
     margin-top: 20px;
     background-color: var(--black-color);
     color: var(--red-color);
     left: 0;
     right: 0;
+    bottom: 0;
+}
+.footer1{
+    position: relative;
+    margin-top: 20px;
+    background-color: var(--black-color);
+    color: var(--red-color);
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .btn{
