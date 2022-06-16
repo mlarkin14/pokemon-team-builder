@@ -26,6 +26,7 @@ router.post("/", (req, res) => {
         type: req.body.type,
         weight: req.body.weight,
         height: req.body.height,
+        img_url: req.body.img_url,
         team_id: req.body.team_id
     })
         .then(dbPokemonData => res.json(dbPokemonData))

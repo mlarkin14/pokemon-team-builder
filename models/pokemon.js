@@ -28,6 +28,10 @@ Pokemon.init(
     type: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    img_url: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   },
   {
