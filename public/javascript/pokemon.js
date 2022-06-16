@@ -16,7 +16,6 @@ function fetchPokemonData(pokemon) {
     fetch(url)
         .then(response => response.json())
         .then(function (pokeData) {
-            console.log(pokeData);
             appendPokemon(pokeData);
     })
 }
@@ -29,14 +28,16 @@ function appendPokemon(pokemon) {
     btn.setAttribute("class", "btn btn-sm btn-success add-pkmn-btn")
 
     btn.textContent = "Add to Team"
-
+    console.log(pokemon);
     btn.onclick = function () {
         var pokemonToAdd = {
             name: pokemon.species.name,
             weight: pokemon.weight,
             height: pokemon.height,
-            type: pokemon.types[0].type.name
+            type: pokemon.types[0].type.name,
+            img_url: pokemon.sprites.front_default
         }
+
 
         handleClick(pokemonToAdd)
     };
