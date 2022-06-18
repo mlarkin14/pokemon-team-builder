@@ -4,11 +4,10 @@ const { User, Teams, Pokemon } = require('../../models')
 // get all teams
 router.get('/', (req, res) => {
     Teams.findAll({
-        attributes: [
-            'id',
-            'pokemon',
-            'user_id'
-        ],
+        // attributes: [
+        //     'id',
+        //     'user_id'
+        // ],
         include: [
             {
                 model: User,

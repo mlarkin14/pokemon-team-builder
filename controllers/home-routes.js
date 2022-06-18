@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Pokemon } = require('../models')
+const { Pokemon, Teams } = require('../models')
 
 router.get("/", (req, res) => {
     res.render("homepage", {
@@ -31,13 +31,20 @@ router.get("/pokemon", (req, res) => {
 
 router.get("/team", (req, res) => {
 
-    Pokemon.findAll({
-        attributes: ['id', 'pokemon_id', 'pokemon', 'weight', 'height', 'type', 'img_url']
+    Teams.findOne({
+        where: {
+            user_id: req.session.id
+        },
+        include: [
+            {
+                model: Pokemon
+            }
+        ]
     })
-        .then((dbPokemonData) => {
-            const pokemon = dbPokemonData.map((pokemon) => pokemon.get({ plain: true }));
+        .then((dbTeamData) => {
+            // const team = dbTeamData.map((team) => team.get({ plain: true }));
             res.render("team", {
-                pokemon,
+                dbTeamData,
                 loggedIn: req.session.loggedIn
             })
         })

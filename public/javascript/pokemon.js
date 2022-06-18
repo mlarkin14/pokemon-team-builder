@@ -70,24 +70,16 @@ function appendPokemon(pokemon) {
 async function handleClick(pokemonData) {
     console.log("pokemon to add", pokemonData)
 
-    const pokemon = pokemonData.name;
+    const name = pokemonData.name;
     const height = pokemonData.height;
     const weight = pokemonData.weight;
     const img_url = pokemonData.img_url;
     const type = pokemonData.type;
 
-    const response = await fetch('/api/teams', {
-        method: 'POST',
-        body: JSON.stringify({ pokemon }),
-        headers: { 'Content-Type': 'application/json' }
-    });
-
-    if (response.ok) {
-
         const response = await fetch('/api/pokemon', {
             method: "POST",
             body: JSON.stringify({
-                pokemon,
+                name,
                 height,
                 weight,
                 img_url,
@@ -99,10 +91,6 @@ async function handleClick(pokemonData) {
         if (response.ok) {
             document.location.replace('/team');
         }
-
-    } else {
-        alert(response.statusText);
-    }
 }
 
 
