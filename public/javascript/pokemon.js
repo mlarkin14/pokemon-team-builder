@@ -67,7 +67,7 @@ function appendPokemon(pokemon) {
 }
 
 async function handleClick(pokemonData) {
-    document.location.replace('/team');
+       document.location.replace('/team');
     console.log("pokemon to add", pokemonData)
 
     const name = pokemonData.name;
