@@ -32,7 +32,7 @@ router.get("/pokemon", (req, res) => {
 router.get("/team", (req, res) => {
 
     Pokemon.findAll({
-        attributes: ['id', 'name', 'weight', 'height', 'type', 'img_url']
+        attributes: ['id', 'pokemon_id', 'name', 'weight', 'height', 'type', 'img_url']
     })
         .then((dbPokemonData) => {
             const pokemon = dbPokemonData.map((pokemon) => pokemon.get({ plain: true }));

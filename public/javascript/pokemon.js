@@ -6,7 +6,7 @@ function fetchPokemon() {
             allpokemon.results.forEach(function (pokemon) {
                 fetchPokemonData(pokemon)
             })
-        })        
+        })
 }
 
 function fetchPokemonData(pokemon) {
@@ -17,7 +17,7 @@ function fetchPokemonData(pokemon) {
         .then(response => response.json())
         .then(function (pokeData) {
             appendPokemon(pokeData);
-    })
+        })
 }
 
 var pokemonHolder = document.querySelector(".pokemon-holder");
@@ -61,23 +61,35 @@ function appendPokemon(pokemon) {
     // fill with appropiate data
     pokemonNameElement.textContent = pokemon.species.name;
 
-    pokemonCard.append(pokemonNameElement, pokemonPic, pokeHeight, pokeWeight, pokeType, btn )
+    pokemonCard.append(pokemonNameElement, pokemonPic, pokeHeight, pokeWeight, pokeType, btn)
     //append to page
     pokemonHolder.appendChild(pokemonCard);
 
 }
 
-async function handleClick(pokemon){
+async function handleClick(pokemon) {
     console.log("pokeomon to add", pokemon)
 
-    const response = await fetch('/api/pokemon', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(pokemon)
+    const pokemonName = pokemon.name;
+
+    const response = await fetch('/api/teams', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json " },
+        body: JSON.stringify(pokemonName)
     });
 
     if (response.ok) {
-        document.location.replace('/team')
+
+        const response = await fetch('/api/pokemon', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(pokemon)
+        })
+        
+        if (response.ok) {
+            document.location.replace('/team');
+        }
+
     } else {
         alert(response.statusText);
     }

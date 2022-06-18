@@ -12,6 +12,10 @@ Teams.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+    },
+    pokemon: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   },
   {
