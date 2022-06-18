@@ -33,25 +33,33 @@ router.get("/team", (req, res) => {
 
     Teams.findOne({
         where: {
-            user_id: req.session.id
+            user_id: req.session.user_id
         },
         include: [
             {
-                model: Pokemon
+                model: Pokemon,
+                attributes: ['id', 'team_id', 'name', 'height', 'weight', 'type', 'img_url']
             }
         ]
     })
         .then((dbTeamData) => {
-            // const team = dbTeamData.map((team) => team.get({ plain: true }));
-            res.render("team", {
-                dbTeamData,
-                loggedIn: req.session.loggedIn
-            })
+            if (dbTeamData) {
+                const team = dbTeamData.get({plain:true})
+                // const team = dbTeamData.map((team) => team.get({ plain: true }));
+                console.log(team)
+                res.render("team", {
+                    team,
+                    loggedIn: req.session.loggedIn
+                })
+            } else {
+            res.render("team",)
+        }
         })
         .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        })
+                    console.log(err);
+                    res.status(500).json(err);
+                })
+
 });
 
 

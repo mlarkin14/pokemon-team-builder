@@ -28,7 +28,6 @@ function appendPokemon(pokemon) {
     btn.setAttribute("class", "btn btn-sm btn-success add-pkmn-btn")
 
     btn.textContent = "Add to Team"
-    console.log(pokemon);
     btn.onclick = function () {
         var pokemonToAdd = {
             name: pokemon.species.name,
@@ -68,6 +67,7 @@ function appendPokemon(pokemon) {
 }
 
 async function handleClick(pokemonData) {
+    document.location.replace('/team');
     console.log("pokemon to add", pokemonData)
 
     const name = pokemonData.name;
@@ -76,25 +76,22 @@ async function handleClick(pokemonData) {
     const img_url = pokemonData.img_url;
     const type = pokemonData.type;
 
-        const response = await fetch('/api/pokemon', {
-            method: "POST",
-            body: JSON.stringify({
-                name,
-                height,
-                weight,
-                img_url,
-                type
-            }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-
-        if (response.ok) {
-            document.location.replace('/team');
-        }
+    const response = await fetch('/api/pokemon', {
+        method: "POST",
+        body: JSON.stringify({
+            name,
+            height,
+            weight,
+            img_url,
+            type
+        }),
+        headers: { 'Content-Type': 'application/json' },
+    })
+    if (response.ok) {
+        document.location.replace('/team');
+    } else {
+        alert(response.statusText);
+    }
 }
-
-
-
-
 
 fetchPokemon();
