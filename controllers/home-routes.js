@@ -32,7 +32,7 @@ router.get("/pokemon", (req, res) => {
 router.get("/team", (req, res) => {
 
     Pokemon.findAll({
-        attributes: ['id', 'pokemon_id', 'name', 'weight', 'height', 'type', 'img_url']
+        attributes: ['id', 'pokemon_id', 'pokemon', 'weight', 'height', 'type', 'img_url']
     })
         .then((dbPokemonData) => {
             const pokemon = dbPokemonData.map((pokemon) => pokemon.get({ plain: true }));
@@ -41,12 +41,11 @@ router.get("/team", (req, res) => {
                 loggedIn: req.session.loggedIn
             })
         })
-        .catch((err) => {
-            console.log((err) => {
-                res.status(500).json(err);
-            })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
         })
-    });
+});
 
 
 module.exports = router;

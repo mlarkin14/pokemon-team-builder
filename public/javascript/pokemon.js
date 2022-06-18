@@ -67,25 +67,35 @@ function appendPokemon(pokemon) {
 
 }
 
-async function handleClick(pokemon) {
-    console.log("pokeomon to add", pokemon)
+async function handleClick(pokemonData) {
+    console.log("pokemon to add", pokemonData)
 
-    const pokemonName = pokemon.name;
+    const pokemon = pokemonData.name;
+    const height = pokemonData.height;
+    const weight = pokemonData.weight;
+    const img_url = pokemonData.img_url;
+    const type = pokemonData.type;
 
     const response = await fetch('/api/teams', {
         method: 'POST',
-        headers: { "Content-Type": "application/json " },
-        body: JSON.stringify(pokemonName)
+        body: JSON.stringify({ pokemon }),
+        headers: { 'Content-Type': 'application/json' }
     });
 
     if (response.ok) {
 
         const response = await fetch('/api/pokemon', {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(pokemon)
+            body: JSON.stringify({
+                pokemon,
+                height,
+                weight,
+                img_url,
+                type
+            }),
+            headers: { 'Content-Type': 'application/json' },
         })
-        
+
         if (response.ok) {
             document.location.replace('/team');
         }
