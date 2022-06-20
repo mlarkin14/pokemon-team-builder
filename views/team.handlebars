@@ -4,8 +4,8 @@
     <div class="card-group">
 
         {{!-- first pokemon box --}}
-        {{#if team.Pokemons.0.name}}
         <div class="pokemon-1 card">
+            {{#if team.Pokemons.0.name}}
             <img class="card-img-top team-image" src={{team.Pokemons.0.img_url}} alt="Card image pokemon 1">
             <div class="card-body">
                 <h5 class="card-title">{{team.Pokemons.0.name}}</h5>
@@ -18,8 +18,9 @@
 
 
         {{!-- second pokemon box --}}
-        {{#if team.Pokemons.1.name}}
+
         <div class="pokemon-2 card">
+            {{#if team.Pokemons.1.name}}
             <img class="card-img-top team-image" src={{team.Pokemons.1.img_url}} alt="Card image pokemon 2">
             <div class="card-body">
                 <h5 class="card-title">{{team.Pokemons.1.name}}</h5>
@@ -32,9 +33,9 @@
         </div>
 
         {{!-- third pokemon box --}}
-        {{#if team.Pokemons.2.name}}
-        <div class="pokemon-3 card">
 
+        <div class="pokemon-3 card">
+        {{#if team.Pokemons.2.name}}
             <img class="card-img-top team-image" src={{team.Pokemons.2.img_url}} alt="Card image pokemon 3">
             <div class="card-body">
                 <h5 class="card-title">{{team.Pokemons.2.name}}</h5>
@@ -46,12 +47,14 @@
             </div>
         </div>
     </div>
+    
 
     <div class="container margin-cards">
         <div class="card-group">
+
             {{!-- fourth pokemon box --}}
-            {{#if team.Pokemons.3.name}}
             <div class="pokemon-4 card">
+                {{#if team.Pokemons.3.name}}
                 <img class="card-img-top team-image" src={{team.Pokemons.3.img_url}} alt="Card image pokemon 4">
                 <div class="card-body">
                     <h5 class="card-title">{{team.Pokemons.3.name}}</h5>
@@ -64,25 +67,24 @@
             </div>
 
             {{!-- fifth pokemon box --}}
-            {{#if team.Pokemons.4.name}}
             <div class="pokemon-5 card">
-                <div class="dropdown">
-
-                </div>
+            {{#if team.Pokemons.4.name}}
                 <img class="card-img-top team-image" src={{team.Pokemons.4.img_url}} alt="Card image pokemon 5">
                 <div class="card-body">
                     <h5 class="card-title">{{team.Pokemons.4.name}}</h5>
                     <p class="card-text">{{team.Pokemons.4.weight}}</p>
+                </div>
                     {{else}}
                     <button class="btn btn-secondary add-pokemon" type="button" id="add-pokemon" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
-                        {{/if}}
-                </div>
+                {{/if}}
             </div>
+            
 
             {{!-- six pokemon box --}}
-            {{#if team.Pokemons.5.name}}
+
             <div class="pokemon-6 card">
+                {{#if team.Pokemons.5.name}}
                 <img class="card-img-top team-image"
                     src={{team.Pokemons.5.img_url}}
                     alt="Card image pokemon 6">
@@ -90,10 +92,10 @@
                     <h5 class="card-title">{{team.Pokemons.5.name}}</h5>
                     <p class="card-text">{{team.Pokemons.5.weight}}</p>
                 </div>
-{{else}}
+                {{else}}
                 <button class="btn btn-secondary add-pokemon" type="button" id="add-pokemon" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
-                    {{/if}}
+                {{/if}}
             </div>
         </div>
     </div>
