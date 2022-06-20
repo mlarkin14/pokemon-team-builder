@@ -4,12 +4,14 @@
     <div class="card-group">
 
         {{!-- first pokemon box --}}
-        {{#if team.Pokemons.0.name}}
-        <div class="pokemon-1 card">
+        <div class="pokemon card">
+            {{#if team.Pokemons.0.name}}
             <img class="card-img-top team-image" src={{team.Pokemons.0.img_url}} alt="Card image pokemon 1">
             <div class="card-body">
-                <h5 class="card-title">{{team.Pokemons.0.name}}</h5>
-                <p class="card-text">{{team.Pokemons.0.weight}}</p>
+                <h5 class="card-title text-uppercase">{{team.Pokemons.0.name}}</h5>
+                <p class="card-text">Height: {{team.Pokemons.0.height}} decimetres</br>
+                    Weight: {{team.Pokemons.0.weight}} hectograms</br>
+                    Type: {{team.Pokemons.0.type}} </p>
             </div>
             {{else}}
             <button class="btn btn-secondary add-pokemon" type="submit" id="add-pokemon">Choose your pokemon</button>
@@ -18,12 +20,15 @@
 
 
         {{!-- second pokemon box --}}
-        {{#if team.Pokemons.1.name}}
-        <div class="pokemon-2 card">
+
+        <div class="pokemon card">
+            {{#if team.Pokemons.1.name}}
             <img class="card-img-top team-image" src={{team.Pokemons.1.img_url}} alt="Card image pokemon 2">
             <div class="card-body">
-                <h5 class="card-title">{{team.Pokemons.1.name}}</h5>
-                <p class="card-text">{{team.Pokemons.1.weight}}</p>
+                <h5 class="card-title text-uppercase">{{team.Pokemons.1.name}}</h5>
+                <p class="card-text">Height: {{team.Pokemons.1.height}} decimetres</br>
+                    Weight: {{team.Pokemons.1.weight}} hectograms</br>
+                    Type: {{team.Pokemons.1.type}} </p>
             </div>
             {{else}}
             <button class="btn btn-secondary add-pokemon" type="button" id="add-pokemon" data-toggle="dropdown"
@@ -32,13 +37,16 @@
         </div>
 
         {{!-- third pokemon box --}}
-        {{#if team.Pokemons.2.name}}
-        <div class="pokemon-3 card">
 
+        <div class="pokemon card">
+        {{#if team.Pokemons.2.name}}
             <img class="card-img-top team-image" src={{team.Pokemons.2.img_url}} alt="Card image pokemon 3">
             <div class="card-body">
-                <h5 class="card-title">{{team.Pokemons.2.name}}</h5>
-                <p class="card-text">{{team.Pokemons.2.weight}}</p>
+                <h5 class="card-title text-uppercase">{{team.Pokemons.2.name}}</h5>
+                <p class="card-text">Height: {{team.Pokemons.2.height}} decimetres</br>
+                    Weight: {{team.Pokemons.2.weight}} hectograms</br>
+                    Type: {{team.Pokemons.2.type}} </p>
+            </div>
                 {{else}}
                 <button class="btn btn-secondary add-pokemon" type="button" id="add-pokemon" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
@@ -46,16 +54,20 @@
             </div>
         </div>
     </div>
+    
 
     <div class="container margin-cards">
         <div class="card-group">
+
             {{!-- fourth pokemon box --}}
-            {{#if team.Pokemons.3.name}}
-            <div class="pokemon-4 card">
+            <div class="pokemon card">
+                {{#if team.Pokemons.3.name}}
                 <img class="card-img-top team-image" src={{team.Pokemons.3.img_url}} alt="Card image pokemon 4">
                 <div class="card-body">
-                    <h5 class="card-title">{{team.Pokemons.3.name}}</h5>
-                    <p class="card-text">{{team.Pokemons.3.weight}}</p>
+                <h5 class="card-title text-uppercase">{{team.Pokemons.3.name}}</h5>
+                <p class="card-text">Height: {{team.Pokemons.3.height}} decimetres</br>
+                    Weight: {{team.Pokemons.3.weight}} hectograms</br>
+                    Type: {{team.Pokemons.3.type}} </p>
                 </div>
                 {{else}}
                 <button class="btn btn-secondary add-pokemon" type="button" id="add-pokemon" data-toggle="dropdown"
@@ -64,36 +76,39 @@
             </div>
 
             {{!-- fifth pokemon box --}}
+            <div class="pokemon card">
             {{#if team.Pokemons.4.name}}
-            <div class="pokemon-5 card">
-                <div class="dropdown">
-
-                </div>
                 <img class="card-img-top team-image" src={{team.Pokemons.4.img_url}} alt="Card image pokemon 5">
                 <div class="card-body">
-                    <h5 class="card-title">{{team.Pokemons.4.name}}</h5>
-                    <p class="card-text">{{team.Pokemons.4.weight}}</p>
+                <h5 class="card-title text-uppercase">{{team.Pokemons.4.name}}</h5>
+                <p class="card-text">Height: {{team.Pokemons.4.height}} decimetres</br>
+                    Weight: {{team.Pokemons.4.weight}} hectograms</br>
+                    Type: {{team.Pokemons.4.type}} </p>
+                </div>
                     {{else}}
                     <button class="btn btn-secondary add-pokemon" type="button" id="add-pokemon" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
-                        {{/if}}
-                </div>
+                {{/if}}
             </div>
+            
 
             {{!-- six pokemon box --}}
-            {{#if team.Pokemons.5.name}}
-            <div class="pokemon-6 card">
+
+            <div class="pokemon card">
+                {{#if team.Pokemons.5.name}}
                 <img class="card-img-top team-image"
                     src={{team.Pokemons.5.img_url}}
                     alt="Card image pokemon 6">
                 <div class="card-body">
-                    <h5 class="card-title">{{team.Pokemons.5.name}}</h5>
-                    <p class="card-text">{{team.Pokemons.5.weight}}</p>
+                <h5 class="card-title text-uppercase">{{team.Pokemons.5.name}}</h5>
+                <p class="card-text">Height: {{team.Pokemons.5.height}} decimetres</br>
+                    Weight: {{team.Pokemons.5.weight}} hectograms</br>
+                    Type: {{team.Pokemons.5.type}} </p>
                 </div>
-{{else}}
+                {{else}}
                 <button class="btn btn-secondary add-pokemon" type="button" id="add-pokemon" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
-                    {{/if}}
+                {{/if}}
             </div>
         </div>
     </div>
