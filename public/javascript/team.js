@@ -36,4 +36,9 @@ async function deletePokemon(event) {
   }
 }
 
-deleteBtn.addEventListener('click', deletePokemon);
+
+deleteBtns = document.getElementsByClassName("delete-pokemon");
+for (var i = 0; i < deleteBtns.length; i++) {
+    deleteBtns[i].addEventListener('click', deletePokemon);
+}
+
