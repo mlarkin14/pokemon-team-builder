@@ -13,6 +13,7 @@
                     Weight: {{team.Pokemons.0.weight}} hectograms</br>
                     Type: {{team.Pokemons.0.type}} </p>
             </div>
+            <button class="btn btn-outline-danger delete-pokemon" type="submit" id="delete-pokemon" data-id={{team.Pokemons.0.id}}>Delete Pokemon</button>
             {{else}}
             <button class="btn btn-secondary add-pokemon" type="submit" id="add-pokemon">Choose your pokemon</button>
             {{/if}}

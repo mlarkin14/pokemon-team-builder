@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
         })
 })
 
-//create a new team
+//create a new pokemon and add to team
 router.post("/", (req, res) =>  {
     Pokemon.create({
         name: req.body.name,
@@ -45,5 +45,25 @@ router.post("/", (req, res) =>  {
         })
 })
 
+
+//delete pokemon
+router.delete('/:id', (req, res) => {
+    Pokemon.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(dbPokemonData => {
+            if (!dbPokemonData) {
+                res.status(404).json({ message: 'No pokemon found with this id' });
+                return
+            }
+            res.json(dbPokemonData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+    })
+})
 
 module.exports = router;
