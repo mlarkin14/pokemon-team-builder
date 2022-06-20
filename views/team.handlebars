@@ -1,74 +1,101 @@
 {{! this is the team builder page. it will be labeled /team}}
 
-
 <div class="container margin-cards">
     <div class="card-group">
+
+        {{!-- first pokemon box --}}
+        {{#if team.Pokemons.0.name}}
         <div class="pokemon-1 card">
-            <img class="card-img-top team-image" src={{ pokemon.0.img_url }} alt="Card image pokemon 1">
+            <img class="card-img-top team-image" src={{team.Pokemons.0.img_url}} alt="Card image pokemon 1">
             <div class="card-body">
-                <h5 class="card-title">{{ pokemon.0.name }}</h5>
-                <p class="card-text">{{ pokemon.0.weight}}</p>
-
-                <button class="btn btn-secondary add-pokemon" type="submit" id="add-pokemon">Choose your pokemon</button>
+                <h5 class="card-title">{{team.Pokemons.0.name}}</h5>
+                <p class="card-text">{{team.Pokemons.0.weight}}</p>
             </div>
+            {{else}}
+            <button class="btn btn-secondary add-pokemon" type="submit" id="add-pokemon">Choose your pokemon</button>
+            {{/if}}
         </div>
+
+
+        {{!-- second pokemon box --}}
+        {{#if team.Pokemons.1.name}}
         <div class="pokemon-2 card">
-            <div class="dropdown">
-                <button class="btn btn-secondary" type="button" id="add-pokemon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
-            </div>
-            <img class="card-img-top team-image" src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/4/4c/Pokemans_006.gif?width=1280" alt="Card image pokemon 2">
+            <img class="card-img-top team-image" src={{team.Pokemons.1.img_url}} alt="Card image pokemon 2">
             <div class="card-body">
-                <h5 class="card-title">Charzard</h5>
-                <p class="card-text">Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.</p>
+                <h5 class="card-title">{{team.Pokemons.1.name}}</h5>
+                <p class="card-text">{{team.Pokemons.1.weight}}</p>
             </div>
+            {{else}}
+            <button class="btn btn-secondary add-pokemon" type="button" id="add-pokemon" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
+            {{/if}}
         </div>
+
+        {{!-- third pokemon box --}}
+        {{#if team.Pokemons.2.name}}
         <div class="pokemon-3 card">
-            <div class="dropdown">
-                <button class="btn btn-secondary" type="button" id="add-pokemon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
-            </div>
-            <img class="card-img-top team-image" src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/8/8b/Pokemans_009.gif?width=1280" alt="Card image pokemon 3">
+
+            <img class="card-img-top team-image" src={{team.Pokemons.2.img_url}} alt="Card image pokemon 3">
             <div class="card-body">
-                <h5 class="card-title">Blastoise</h5>
-                <p class="card-text">A brutal POKéMON with pressurized water jets on its shell. They are used for high speed tackles.</p>
+                <h5 class="card-title">{{team.Pokemons.2.name}}</h5>
+                <p class="card-text">{{team.Pokemons.2.weight}}</p>
+                {{else}}
+                <button class="btn btn-secondary add-pokemon" type="button" id="add-pokemon" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
+                {{/if}}
             </div>
         </div>
     </div>
-</div>
 
-<div class="container margin-cards">
-    <div class="card-group">
-        <div class="pokemon-4 card">
-            <div class="dropdown">
-                <button class="btn btn-secondary" type="button" id="add-pokemon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
+    <div class="container margin-cards">
+        <div class="card-group">
+            {{!-- fourth pokemon box --}}
+            {{#if team.Pokemons.3.name}}
+            <div class="pokemon-4 card">
+                <img class="card-img-top team-image" src={{team.Pokemons.3.img_url}} alt="Card image pokemon 4">
+                <div class="card-body">
+                    <h5 class="card-title">{{team.Pokemons.3.name}}</h5>
+                    <p class="card-text">{{team.Pokemons.3.weight}}</p>
+                </div>
+                {{else}}
+                <button class="btn btn-secondary add-pokemon" type="button" id="add-pokemon" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
+                {{/if}}
             </div>
-            <img class="card-img-top team-image" src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/3/38/Pokemans_003.gif?width=1280" alt="Card image pokemon 4">
-            <div class="card-body">
-                <h5 class="card-title">Venusaur</h5>
-                <p class="card-text">The plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.</p>
+
+            {{!-- fifth pokemon box --}}
+            {{#if team.Pokemons.4.name}}
+            <div class="pokemon-5 card">
+                <div class="dropdown">
+
+                </div>
+                <img class="card-img-top team-image" src={{team.Pokemons.4.img_url}} alt="Card image pokemon 5">
+                <div class="card-body">
+                    <h5 class="card-title">{{team.Pokemons.4.name}}</h5>
+                    <p class="card-text">{{team.Pokemons.4.weight}}</p>
+                    {{else}}
+                    <button class="btn btn-secondary add-pokemon" type="button" id="add-pokemon" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
+                        {{/if}}
+                </div>
             </div>
-        </div>
-        <div class="pokemon-5 card">
-            <div class="dropdown">
-                <button class="btn btn-secondary" type="button" id="add-pokemon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
-            </div>
-            <img class="card-img-top team-image" src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/b/b5/Pokemans_143.gif?width=1280" alt="Card image pokemon 5">
-            <div class="card-body">
-                <h5 class="card-title">Snorlax</h5>
-                <p class="card-text">Very lazy. Just eats and sleeps. As its rotund bulk builds, it becomes steadily more slothful.</p>
-            </div>
-        </div>
-        <div class="pokemon-6 card">
-            <div class="dropdown">
-                <button class="btn btn-secondary" type="button" id="add-pokemon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
-            </div>
-            <img class="card-img-top team-image" src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-black-and-white/a/ac/Pokemans_131.gif?width=1280" alt="Card image pokemon 6">
-            <div class="card-body">
-                <h5 class="card-title">Lapras</h5>
-                <p class="card-text">A POKéMON that has been overhunted almost to extinction. It can ferry people across the water.</p>
+
+            {{!-- six pokemon box --}}
+            {{#if team.Pokemons.5.name}}
+            <div class="pokemon-6 card">
+                <img class="card-img-top team-image"
+                    src={{team.Pokemons.5.img_url}}
+                    alt="Card image pokemon 6">
+                <div class="card-body">
+                    <h5 class="card-title">{{team.Pokemons.5.name}}</h5>
+                    <p class="card-text">{{team.Pokemons.5.weight}}</p>
+                </div>
+{{else}}
+                <button class="btn btn-secondary add-pokemon" type="button" id="add-pokemon" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Choose your pokemon</button>
+                    {{/if}}
             </div>
         </div>
     </div>
-</div>
 
-<script src="/javascript/team.js"></script>
-
+    <script src="/javascript/team.js"></script>

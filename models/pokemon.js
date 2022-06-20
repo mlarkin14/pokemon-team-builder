@@ -13,9 +13,17 @@ Pokemon.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    team_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'Teams',
+        key: 'id'
+      }
+    },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     height: {
       type: DataTypes.STRING,

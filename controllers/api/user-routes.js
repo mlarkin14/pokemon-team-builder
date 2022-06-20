@@ -1,12 +1,18 @@
 const router = require('express').Router();
-const { User } = require('../../models')
+const { User, Teams, Pokemon } = require('../../models')
 
 
 // GET /api/users
 router.get('/', (req, res) => {
     //access user model and run findAll
     User.findAll({
-        attributes: { exclude: ['password'] }
+        attributes: { exclude: ['password'] },
+        include: [
+            {
+                model: Teams,
+                include: Pokemon
+            }
+        ]
     })
         .then(dbUserData => {
             res.json(dbUserData)
@@ -45,11 +51,18 @@ router.post('/', (req, res) => {
         user_name: req.body.user_name,
         password: req.body.password
     })
-        .then(dbUserData => res.json(dbUserData))
+        .then(dbUserData => {
+            Teams.create({
+                user_id: dbUserData.id
+            })
+            res.json(dbUserData)
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
+
+
 });
 
 router.post('/login', (req, res) => {
@@ -57,7 +70,12 @@ router.post('/login', (req, res) => {
     User.findOne({
         where: {
             user_name: req.body.user_name
-        }
+        },
+        include: [
+            {
+                model: Teams
+            }
+        ]
     }).then(dbUserData => {
         if (!dbUserData) {
             res.status(400).json({ message: 'No user with that username!' });

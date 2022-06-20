@@ -27,6 +27,12 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // team: {
+    //   type: DataTypes.INTEGER,
+    //   reference: {
+          
+    //   }
+    // }
   },
   { // set password hashing
     hooks: {

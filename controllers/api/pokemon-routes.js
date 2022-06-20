@@ -20,16 +20,25 @@ router.get('/', (req, res) => {
 })
 
 //create a new team
-router.post("/", (req, res) => {
+router.post("/", (req, res) =>  {
     Pokemon.create({
         name: req.body.name,
         type: req.body.type,
         weight: req.body.weight,
         height: req.body.height,
         img_url: req.body.img_url,
-        team_id: req.body.team_id
     })
-        .then(dbPokemonData => res.json(dbPokemonData))
+        .then(async dbPokemonData => {
+           const team =  await Teams.findOne({
+                where: {
+                    user_id: req.session.user_id
+                }
+           })
+            team.addPokemon(dbPokemonData);
+        })
+
+
+            // res.json(dbPokemonData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
