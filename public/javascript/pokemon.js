@@ -6,7 +6,7 @@ function fetchPokemon() {
             allpokemon.results.forEach(function (pokemon) {
                 fetchPokemonData(pokemon)
             })
-        })        
+        })
 }
 
 function fetchPokemonData(pokemon) {
@@ -16,9 +16,8 @@ function fetchPokemonData(pokemon) {
     fetch(url)
         .then(response => response.json())
         .then(function (pokeData) {
-            console.log(pokeData);
             appendPokemon(pokeData);
-    })
+        })
 }
 
 var pokemonHolder = document.querySelector(".pokemon-holder");
@@ -29,14 +28,15 @@ function appendPokemon(pokemon) {
     btn.setAttribute("class", "btn btn-sm btn-success add-pkmn-btn")
 
     btn.textContent = "Add to Team"
-
     btn.onclick = function () {
         var pokemonToAdd = {
             name: pokemon.species.name,
             weight: pokemon.weight,
             height: pokemon.height,
-            type: pokemon.types[0].type.name
+            type: pokemon.types[0].type.name,
+            img_url: pokemon.sprites.front_default
         }
+
 
         handleClick(pokemonToAdd)
     };
@@ -60,30 +60,38 @@ function appendPokemon(pokemon) {
     // fill with appropiate data
     pokemonNameElement.textContent = pokemon.species.name;
 
-    pokemonCard.append(pokemonNameElement, pokemonPic, pokeHeight, pokeWeight, pokeType, btn )
+    pokemonCard.append(pokemonNameElement, pokemonPic, pokeHeight, pokeWeight, pokeType, btn)
     //append to page
     pokemonHolder.appendChild(pokemonCard);
 
 }
 
-async function handleClick(pokemon){
-    console.log("pokeomon to add", pokemon)
+async function handleClick(pokemonData) {
+    document.location.replace('/team');
+    console.log("pokemon to add", pokemonData)
+
+    const name = pokemonData.name;
+    const height = pokemonData.height;
+    const weight = pokemonData.weight;
+    const img_url = pokemonData.img_url;
+    const type = pokemonData.type;
 
     const response = await fetch('/api/pokemon', {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(pokemon)
-    });
-
+        body: JSON.stringify({
+            name,
+            height,
+            weight,
+            img_url,
+            type
+        }),
+        headers: { 'Content-Type': 'application/json' },
+    })
     if (response.ok) {
-        document.location.replace('/team')
+        document.location.replace('/team');
     } else {
         alert(response.statusText);
     }
 }
-
-
-
-
 
 fetchPokemon();

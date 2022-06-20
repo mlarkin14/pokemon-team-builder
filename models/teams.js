@@ -12,6 +12,18 @@ Teams.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+    },
+    // pokemon_team: {
+    //   type: DataTypes.ARRAY(DataTypes.STRING),
+    //   allowNull: true
+    // },
+    user_id: {
+      type: DataTypes.INTEGER, 
+      allowNull: true,
+      references: {
+        model: 'User',
+        key: 'id'
+      }
     }
   },
   {

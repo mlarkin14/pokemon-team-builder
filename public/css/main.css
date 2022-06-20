@@ -114,3 +114,10 @@ body{
     margin-top: 10px;
     
 }
+
+.pokemon{
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
