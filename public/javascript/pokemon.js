@@ -36,7 +36,19 @@ function appendPokemon(pokemon) {
       img_url: pokemon.sprites.front_default,
     };
 
-    handleClick(pokemonToAdd);
+    let text;
+
+    if (
+      confirm("Are you sure you want to add this pokemon to your team?") == true
+    ) {
+      handleClick(pokemonToAdd);
+      text = "Pokemon added - going back to your team page!";
+      alert(text);
+      document.location.replace("/team");
+    } else {
+      text = "Pick a different pokemon!";
+      alert(text);
+    }
   };
 
   // create pokemon name element
@@ -71,7 +83,6 @@ function appendPokemon(pokemon) {
 }
 
 async function handleClick(pokemonData) {
-  document.location.replace("/team");
   console.log("pokemon to add", pokemonData);
 
   const name = pokemonData.name;
@@ -91,11 +102,6 @@ async function handleClick(pokemonData) {
     }),
     headers: { "Content-Type": "application/json" },
   });
-  if (response.ok) {
-    document.location.replace("/team");
-  } else {
-    alert(response.statusText);
-  }
 }
 
 fetchPokemon();
