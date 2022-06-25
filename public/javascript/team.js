@@ -1,6 +1,5 @@
 function viewGallery(event) {
     event.preventDefault();
-    console.log('you clicked the button');
     document.location.replace('/pokemon');
 }
 
@@ -36,7 +35,7 @@ async function deletePokemon(event) {
   }
 }
 
-
+// add listener for delete buttons in loop
 deleteBtns = document.getElementsByClassName("delete-pokemon");
 for (var i = 0; i < deleteBtns.length; i++) {
     deleteBtns[i].addEventListener('click', deletePokemon);
