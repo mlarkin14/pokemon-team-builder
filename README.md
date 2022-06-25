@@ -13,7 +13,7 @@ We chose this as our project because of our shared memories of pokemon when we w
 * SO THAT I can balance my pokemon team to be strong in all battles
 
 ## Deployed Application
-(placeholder)
+https://best-team-pokemon-team-builder.herokuapp.com/
 
 ## Screenshots
 <img width="970" alt="image" src="https://user-images.githubusercontent.com/100256384/173465974-6a97aa6d-c433-42bf-a2ba-6fa00acb9cba.png">

@@ -1,23 +1,22 @@
-
 function fetchPokemon() {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
-        .then(response => response.json())
-        .then(function (allpokemon) {
-            allpokemon.results.forEach(function (pokemon) {
-                fetchPokemonData(pokemon)
-            })
-        })
+  fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+    .then((response) => response.json())
+    .then(function (allpokemon) {
+      allpokemon.results.forEach(function (pokemon) {
+        fetchPokemonData(pokemon);
+      });
+    });
 }
 
 function fetchPokemonData(pokemon) {
-    // save the pokemon's url to a variable
-    let url = pokemon.url
+  // save the pokemon's url to a variable
+  let url = pokemon.url;
 
-    fetch(url)
-        .then(response => response.json())
-        .then(function (pokeData) {
-            appendPokemon(pokeData);
-        })
+  fetch(url)
+    .then((response) => response.json())
+    .then(function (pokeData) {
+      appendPokemon(pokeData);
+    });
 }
 
 var pokemonHolder = document.querySelector(".pokemon-holder");
@@ -50,29 +49,38 @@ function appendPokemon(pokemon) {
         }
     };
 
-    // create pokemon name element
-    var pokemonNameElement = document.createElement('h1');
-    var pokemonCard = document.createElement("div")
-    pokemonCard.setAttribute("class", "card pokeCard col-3")
+    handleClick(pokemonToAdd);
+  };
 
-    var pokemonPic = document.createElement("img")
-    pokemonPic.setAttribute("src", pokemon.sprites.front_default)
+  // create pokemon name element
+  var pokemonNameElement = document.createElement("h1");
+  var pokemonCard = document.createElement("div");
+  pokemonCard.setAttribute("class", "card pokeCard col-3");
 
-    var pokeHeight = document.createElement('h4');
-    var pokeWeight = document.createElement('h4');
-    var pokeType = document.createElement('h4');
+  var pokemonPic = document.createElement("img");
+  pokemonPic.setAttribute("src", pokemon.sprites.front_default);
 
-    pokeHeight.textContent = "Height: " + pokemon.height;
-    pokeWeight.textContent = "Weight: " + pokemon.weight;
-    pokeType.textContent = "Type: " + pokemon.types[0].type.name;
+  var pokeHeight = document.createElement("h4");
+  var pokeWeight = document.createElement("h4");
+  var pokeType = document.createElement("h4");
 
-    // fill with appropiate data
-    pokemonNameElement.textContent = pokemon.species.name;
+  pokeHeight.textContent = "Height: " + pokemon.height;
+  pokeWeight.textContent = "Weight: " + pokemon.weight;
+  pokeType.textContent = "Type: " + pokemon.types[0].type.name;
 
-    pokemonCard.append(pokemonNameElement, pokemonPic, pokeHeight, pokeWeight, pokeType, btn)
-    //append to page
-    pokemonHolder.appendChild(pokemonCard);
+  // fill with appropiate data
+  pokemonNameElement.textContent = pokemon.species.name;
 
+  pokemonCard.append(
+    pokemonNameElement,
+    pokemonPic,
+    pokeHeight,
+    pokeWeight,
+    pokeType,
+    btn
+  );
+  //append to page
+  pokemonHolder.appendChild(pokemonCard);
 }
 
 async function handleClick(pokemonData) {
