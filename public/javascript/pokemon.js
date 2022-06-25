@@ -49,9 +49,6 @@ function appendPokemon(pokemon) {
         }
     };
 
-    handleClick(pokemonToAdd);
-  };
-
   // create pokemon name element
   var pokemonNameElement = document.createElement("h1");
   var pokemonCard = document.createElement("div");
